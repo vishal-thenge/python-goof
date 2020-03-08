@@ -1,15 +1,13 @@
-name: Snyk security scan
+name: Example workflow for Python using Snyk 
 on: pull_request
-
 jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python@master
-        env:
-        	COMMAND: "pip3 install -r requirements.txt"  
-        	SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-        	args: --severity-threshold=high 
+    - uses: actions/checkout@master
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/python@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high
