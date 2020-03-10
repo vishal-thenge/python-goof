@@ -15,10 +15,9 @@ jobs:
       with:
         args: --command=python3
       if: failure()
-    - uses: github-actions-up-and-running/pr-comment@v1.0.0
+    - uses: ettakhi/hello-action@v1.0
       with:
-        env: ${{ secrets.GITHUB }}
-        run: echo "This worked"
+        who-to-greet: matt
         
     
   
