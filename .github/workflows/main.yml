@@ -14,5 +14,5 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         args: --command=python3
-    if: jobs.failure()
+    if: job.failure()
   
