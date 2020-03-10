@@ -14,10 +14,10 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         args: --command=python3
-      if: failure()
     - uses: ettakhi/hello-action@v1.0
       with:
         who-to-greet: matt
+    #if: failure()
         
     
   
