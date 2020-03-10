@@ -14,4 +14,3 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         args: --command=python3
-        command: monitor
