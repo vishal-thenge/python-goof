@@ -13,7 +13,8 @@ jobs:
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        command: snyk test --json > results.json
+        args: --summary --json > results.json
+
     #    if: failure()
         
     
