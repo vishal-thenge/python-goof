@@ -17,7 +17,7 @@ jobs:
     - uses: ettakhi/hello-action@v1.0
       with:
         who-to-greet: matt
-    #if: failure()
+        if: failure()
         
     
   
