@@ -18,7 +18,7 @@ jobs:
     - uses: github-actions-up-and-running/pr-comment@v1.0.0
       with:
         env: ${{ secrets.GITHUB }}
-        myInput: PR failed test
+        run: echo "This worked"
         
     
   
