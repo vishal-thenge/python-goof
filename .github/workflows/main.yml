@@ -14,5 +14,12 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         args: --command=python3
-    if: failure()
+      if: failure()
+    - uses: peter-evans/create-or-update-comment@v1.0.0
+      with:
+        env: ${{ secrets.GITHUB }}
+        repository: python-goof
+        body: test comment
+        
+    
   
