@@ -14,7 +14,24 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         args: --summary
-        run: snyk test --json > results.json
+  
+  bugID:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Wait for status checks'
+        id: waitforstatuschecks
+        uses: "WyriHaximus/github-action-wait-for-status@f8bbe3bb321919ec6a009bc98121f39874dc8ee0"
+        with:
+          ignoreActions: automerge
+          checkInterval: 13
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB }}"
+      - name: 'Merge'
+        uses: "pascalgn/automerge-action@v0.4.0"
+        if: steps.waitforstatuschecks.outputs.status == 'failure'
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          LABELS: bug
 
     #    if: failure()
         
