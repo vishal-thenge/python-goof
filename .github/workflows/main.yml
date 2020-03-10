@@ -13,6 +13,11 @@ jobs:
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
-        args: --command=python3
-    if: failure()
+        command: monitor
+    - uses: ettakhi/hello-action@v1.0
+      with:
+        who-to-greet: matt
+        if: failure()
+        
+    
   
