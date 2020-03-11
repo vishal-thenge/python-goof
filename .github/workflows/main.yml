@@ -20,12 +20,12 @@ jobs:
       #env:
       #  FIRST_NAME: Matt
     
-    - name: Run Snyk to check for vulnerabilities
-      uses: snyk/actions/python@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      with:
-        args: --summary
+    #- name: Run Snyk to check for vulnerabilities
+    #  uses: snyk/actions/python@master
+    #  env:
+    #    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    #  with:
+    #    args: --summary
         # If you want to monitor a project after workflow runs:
         # command: monitor
     
@@ -35,5 +35,5 @@ jobs:
       uses: maxkomarychev/oction-create-issue@v0.7.1
       with:
         token: ${{ secrets.GITHUB }}
-        title: New issue created by $GITHUB_ACTOR
-        body: There is a new issue in $GITHUB_REPOSITORY created by $GITHUB_ACTOR via a $GITHUB_EVENT_NAME
+        title: New issue created by {{ $GITHUB_ACTOR }}
+        body: There is a new issue in {{ $GITHUB_REPOSITORY }} created by {{ $GITHUB_ACTOR }} via a {{ $GITHUB_EVENT_NAME }}
