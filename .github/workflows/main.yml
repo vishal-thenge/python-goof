@@ -9,6 +9,17 @@ jobs:
     steps:
     - uses: actions/checkout@master
       id: snyk_step_id
+      
+    - name: env variables
+      run: |
+        echo Hello world $FIRST_NAME
+        echo $GITHUB_ACTOR
+        echo $GITHUB_REPOSITORY
+        echo $GITHUB_EVENT_NAME
+        echo GITHUB_ACTION
+      env:
+        FIRST_NAME: Matt
+    
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/python@master
       env:
@@ -18,11 +29,6 @@ jobs:
         # If you want to monitor a project after workflow runs:
         # command: monitor
     
-    - name: pygithub test
-      if: failure()
-      run: |
-        pip3 install PyGithub
-        python3 GithubTest.py
       
     #- name: Create and issue
      # if: failure()
