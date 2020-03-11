@@ -13,15 +13,15 @@ jobs:
       uses: snyk/actions/python@master
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        command: |
-          "pip3 install PyGithub"
-          "python3 GithubTest.py"
       with:
         args: --summary
         # If you want to monitor a project after workflow runs:
         # command: monitor
     
-    
+    - name: pygithub test
+      run: |
+        pip3 install PyGithub
+        python3 GithubTest.py
       
     #- name: Create and issue
      # if: failure()
