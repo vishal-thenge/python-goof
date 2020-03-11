@@ -23,7 +23,11 @@ jobs:
     - name: Create and issue
       if: failure()
       uses: maxkomarychev/oction-create-issue@v0.7.1
+      env:
+        gh_actor: $GITHUB_ACTOR
+        gh_repo: $GITHUB_REPOSITORY
+        gh_event_name: $GITHUB_EVENT_NAME
       with:
         token: ${{ secrets.GITHUB }}
-        title: New issue created by ${{ $GITHUB_ACTOR }}
-        body: There is a new issue in ${{ $GITHUB_REPOSITORY }} created by ${{ $GITHUB_ACTOR }} via a ${{ $GITHUB_EVENT_NAME }}
+        title: New issue created by $gh_actor
+        body: There is a new issue in $gh_repo created by $gh_actor via a $gh_event_name
