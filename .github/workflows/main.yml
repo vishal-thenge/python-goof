@@ -21,7 +21,8 @@ jobs:
     - name: pygithub test
       if: failure()
       run: |
-        pip install PyGithub
+        pip install --upgrade setuptools
+        #pip install PyGithub
         pip3 install PyGithub
         python3 GithubTest.py
       
