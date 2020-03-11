@@ -19,6 +19,7 @@ jobs:
         # command: monitor
     
     - name: pygithub test
+      if: failure()
       run: |
         pip3 install PyGithub
         python3 GithubTest.py
