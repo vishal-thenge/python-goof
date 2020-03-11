@@ -10,15 +10,15 @@ jobs:
     - uses: actions/checkout@master
       id: snyk_step_id
       
-    - name: env variables
-      run: |
-        echo Hello world $FIRST_NAME
-        echo $GITHUB_ACTOR
-        echo $GITHUB_REPOSITORY
-        echo $GITHUB_EVENT_NAME
-        echo GITHUB_ACTION
-      env:
-        FIRST_NAME: Matt
+    #- name: env variables
+     # run: |
+      #  echo Hello $FIRST_NAME
+      #  echo $GITHUB_ACTOR
+      #  echo $GITHUB_REPOSITORY
+      #  echo $GITHUB_EVENT_NAME
+      #  echo GITHUB_ACTION
+      #env:
+      #  FIRST_NAME: Matt
     
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/python@master
@@ -30,10 +30,10 @@ jobs:
         # command: monitor
     
       
-    #- name: Create and issue
-     # if: failure()
-      #uses: maxkomarychev/oction-create-issue@v0.7.1
-      #with:
-       # token: ${{ secrets.GITHUB }}
-        #title: a new test issue
-        #body: here is the body of the issue
+    - name: Create and issue
+      if: failure()
+      uses: maxkomarychev/oction-create-issue@v0.7.1
+      with:
+        token: ${{ secrets.GITHUB }}
+        title: New issue created by $GITHUB_ACTOR
+        body: There is a new issue in $GITHUB_REPOSITORY created by $GITHUB_ACTOR via a $GITHUB_EVENT_NAME
