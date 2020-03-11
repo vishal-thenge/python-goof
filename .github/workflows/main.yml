@@ -27,5 +27,5 @@ jobs:
         OWNER: ${{ steps.security.outputs.owner }}
       with:
         token: ${{ secrets.GITHUB }}
-        title: New issue created by $OWNER
+        title: New issue created by ${{ OWNER }}
         #body: There is a new issue in ${{ steps.security.outputs.repo }} created by ${{ steps.security.outputs.owner }}.
